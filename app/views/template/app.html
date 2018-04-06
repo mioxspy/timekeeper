@@ -1,0 +1,38 @@
+
+<!-- begin #header -->
+<div ng-include src="'views/template/header.html'"></div>
+<!-- end #header -->
+
+<div ng-if="setting.layout.pageTopMenu">
+    <!-- begin #top-menu -->
+    <div ng-include src="'views/template/top-menu.html'"></div>
+    <!-- end #top-menu -->
+</div>
+
+<div ng-if="setting.layout.pageWithoutSidebar === false">
+    <!-- begin #sidebar -->
+    <div ng-include src="'views/template/sidebar.html'"></div>
+    <!-- end #sidebar -->
+</div>
+
+<!-- begin #content -->
+<div id="content" view-content class="content" ng-class="{ 
+    'content-full-width': setting.layout.pageContentFullWidth, 
+    'height-full': setting.layout.pageContentFullHeight, 
+    'content-inverse-mode': setting.layout.pageContentInverseMode 
+}">
+    <div ui-view></div>
+</div>
+<!-- end #content -->
+
+<div ng-if="setting.layout.pageWithFooter === true">
+    <!-- begin #footer -->
+    <div id="footer" class="footer">
+        &copy; 2017 All Rights Reserved
+    </div>
+    <!-- end #footer -->
+</div>
+
+<!-- begin scroll to top btn -->
+<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+<!-- end scroll to top btn -->

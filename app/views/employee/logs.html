@@ -1,0 +1,43 @@
+<div ng-controller="EmployeeLogsCtrl as logs">
+	<div class="row">
+		<div class="p-l-1">
+			<div class="placeloadtitle col-md-9" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadbread col-md-3" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadcontent col-md-12" ng-hide="contentPlaceholder"></div>
+		</div>
+	</div>
+	<!-- begin contentData -->
+	<div ng-show="contentData">
+	    <!-- begin breadcrumb -->
+	    <ol class="breadcrumb pull-right">
+	        <li><a href="javascript:;">Home</a></li>
+	        <li class="active">Employee Logs</li>
+	    </ol>
+	    <!-- end breadcrumb -->
+	    <!-- begin page-header -->
+	    <h1 class="page-header">Daily Time Record <small>view employee logs...</small></h1>
+	    <!-- end page-header -->
+	    <!-- begin row -->
+	    <div class="row">
+	    	<div class="col-md-12">
+
+	    		<md-card>
+	    			<md-card-title class="md-whiteframe-4dp
+"  md-colors="{background: 'Amber-A700'}">
+	    				<md-card-title-text>
+	    				<span class="md-headline" md-colors="{color: 'grey-50'}">Employee Logs</span>
+	    				</md-card-title-text>
+	    			</md-card-title>
+	    			<md-divider></md-divider>
+					<md-card-content>
+					<!-- <pre>{{ selected |json }}</pre> -->
+						<table datatable="" id="view-upload" dt-options="dtOptions" dt-instance="dtInstance" dt-columns="dtColumns" class="table table-bordered table-condensed" width="100%">
+						</table>
+					</md-card-content>
+				</md-card>
+
+			</div>
+		<!-- end col-12 -->
+	    </div>
+	</div>
+</div>

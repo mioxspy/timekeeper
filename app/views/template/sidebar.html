@@ -1,0 +1,60 @@
+
+<!-- begin #sidebar -->
+<div id="sidebar" class="sidebar" ng-controller="sidebarController" ng-class="{ 'sidebar-transparent': setting.layout.pageSidebarTransparent }">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        <ul class="nav">
+            <li class="nav-profile">
+                <div class="image">
+                    <a href="javascript:;"><img src="images/no-photo.jpg" alt="" /></a>
+                </div>
+                <div class="info">
+                    {{profile.firstName}} {{profile.lastName}}
+                    <small>Employee</small>
+                </div>
+            </li>
+        </ul>
+        <!-- end sidebar user -->
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="nav-header">Navigation</li>
+            <li ui-sref-active="active" class="has-sub" >
+                <a ui-sref="app.dashboard.index" md-ink-ripple="#E0F2F1">
+                    <i class="fa fa-tachometer"></i
+                    <span>Dashboard</span> 
+                </a>
+            </li>
+            <li ui-sref-active="active" class="has-sub" permission="['create users','update users', 'view users','create roles','update roles', 'view roles','activate/deactivate users']"> <!-- ng-class="{active:$state.includes('app.dashboard')}" -->
+                <a href="javascript:;" md-ink-ripple="#009688">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-id-card-o"></i>
+                    <span>User Management</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li permission="['create users','update users', 'view users','activate/deactivate users']"><a href="javascript:;" ui-sref="app.employee.config">Manage Users</a></li>
+                    <li permission="['create roles','update roles', 'view roles']"><a href="javascript:;" ui-sref="app.employee.roles">Manage Roles </a></li>
+                </ul>
+            </li>
+            <li ui-sref-active="active" class="has-sub" permission="['view logs', 'view profile','update profile']"> <!-- ng-class="{active:$state.includes('app.dashboard')}" -->
+                <a href="javascript:;" md-ink-ripple="#009688">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa fa-th"></i>
+                    <span>Time Record</span> 
+                </a>
+                <ul class="sub-menu">
+                    <li permission="['view logs']"><a href="javascript:;" ui-sref="app.employee.logs">Employee Logs</a></li>
+                    <li permission="['view profile','update profile']"><a href="javascript:;" ui-sref="app.employee.dailylogs">Daily Logs</a></li>
+                </ul>
+            </li>
+            <!-- begin sidebar minify button -->
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+            <!-- end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
+<!-- end #sidebar -->
+

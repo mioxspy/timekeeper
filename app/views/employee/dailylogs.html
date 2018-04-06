@@ -1,0 +1,82 @@
+<div ng-controller="EmployeeDailylogsCtrl as logs">
+	<div class="row">
+		<div class="p-l-1">
+			<div class="placeloadtitle col-md-9" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadbread col-md-3" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadleft col-md-5" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadright col-md-7" ng-hide="contentPlaceholder"></div>
+		</div>
+	</div>
+	<!-- begin contentData -->
+	<div ng-show="contentData">
+	    <!-- begin breadcrumb -->
+	    <ol class="breadcrumb pull-right">
+	        <li><a href="javascript:;">Home</a></li>
+	        <li class="active">Daily Logs</li>
+	    </ol>
+	    <!-- end breadcrumb -->
+	    <!-- begin page-header -->
+	    <h1 class="page-header">Daily Time Record <small>view time in and out...</small></h1>
+	    <!-- end page-header -->
+	    <!-- begin row -->
+	    <div class="row">
+	    	<!-- start col-md-5 -->
+	    	<div class="col-md-5">
+				<md-card >
+					<md-card-content>
+						<div layout="column" layout-padding ng-cloak>
+							<md-content class="md-no-momentum">
+								<div class="text-center">
+									<h3 class="m-t-10" md-colors="{color: 'grey-800'}">{{profile.firstName}} {{profile.lastName}}</h3>
+									<p class="md-title" md-colors="{color: 'grey-700'}">Employee No: {{profile.employeeno}}</p>
+									<p class="md-body-1" md-colors="{color: 'grey-700'}">{{profile.username}}</p>
+								</div>
+								<div class="search-divider m-b-20"></div>
+								<form name="profileForm" ng-submit="changePassword(passDetails)">
+									<div layout="row" layout-wrap>
+										<div flex="100">
+											<md-input-container class="md-block">
+												<label>Password</label>
+												<input type="password" minlength="6" name="password" ng-pattern="passwordFormat" ng-model="passDetails.password">
+												<div ng-messages="profileForm.password.$error" md-auto-hide="false" multiple>
+			                                        <div ng-message="minlength">Your password must be not less than 6.</div>
+			                                        <div ng-message="pattern">Your password must contain atlest one lowercase letter, one number and one special character.</div>
+			                                    </div>
+											</md-input-container>
+										</div>
+									</div>
+									
+									<div class="m-t-30 text-center">
+										<md-button type="submit" ng-disabled="profileForm.$invalid" class="md-raised md-primary m-l-0">Update</md-button>
+
+										<!-- <pre>{{profile |json}}</pre> -->
+									</div>
+
+								</form>
+							</md-content>
+						</div>
+					</md-card-content>
+				</md-card>
+		    </div>
+		    <!-- end col-md-5 -->
+		    <!-- start col-md-7 -->
+	    	<div class="col-md-7">
+	    		<md-card>
+	    			<md-card-title class="md-whiteframe-4dp
+"  md-colors="{background: 'Amber-A700'}">
+	    				<md-card-title-text>
+	    				<span class="md-headline" md-colors="{color: 'grey-50'}">Daily Logs</span>
+	    				</md-card-title-text>
+	    			</md-card-title>
+	    			<md-divider></md-divider>
+					<md-card-content>
+						<table datatable="" dt-options="dtOptions" dt-instance="dtInstance" dt-columns="dtColumns" class="table table-bordered table-condensed" width="100%">
+						</table>
+					</md-card-content>
+				</md-card>
+
+			</div>
+		<!-- end col-12 -->
+	    </div>
+	</div>
+</div>

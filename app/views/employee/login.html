@@ -1,0 +1,73 @@
+
+<div ng-controller="MemberLoginCtrl">
+	<div class="login-cover">
+	    <div class="login-cover-image"><img src="images/login-bg/bg-4.jpg" data-id="login-cover-image" alt="" /></div>
+	    <div class="login-cover-bg"></div>
+	</div>
+	
+    <!-- begin login -->
+    <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+        <!-- begin brand -->
+        <div class="login-header">
+            <div class="brand">
+                <!-- <span class="logo"></span> Timekeeper  -->
+                <!-- <small>Access your account</small> -->
+            </div>
+            <!-- <div class="icon">
+                <i class="fa fa-sign-in"></i>
+            </div> -->
+        </div>
+        <!-- end brand -->
+        <div class="login-content">
+            <form method="POST" name="signInForm" class="margin-bottom-0 col s12" ng-submit="submitForm(loginDetails)">
+                <div layout="row" layout-wrap>
+                    <div flex="100">
+                        <md-input-container class="md-block">
+                            <label>Username</label>
+                            <input required type="text" name="username" ng-model="loginDetails.username"
+                            />
+                            <div ng-messages="signInForm.username.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div layout="row" layout-wrap>
+                    <div flex="100">
+                        <md-input-container class="md-block">
+                            <label>Password</label>
+                            <input required type="password" name="password" ng-model="loginDetails.password"
+                            />
+                            <div ng-messages="signInForm.password.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <md-input-container class="md-block">
+                    <md-checkbox name="rememberMe" ng-model="loginDetails.rememberMe">
+                        Remember Me
+                    </md-checkbox>
+                </md-input-container>
+
+                <div layout="column" layout-wrap>
+                    <md-button type="submit" class="md-raised md-cornered md-primary">Sign In</md-button>
+
+                    <div class="col s4 offset-s4">
+                        <md-divider class="md-primary md-hue-1"></md-divider>
+                    </div>
+
+                    <!-- <md-button type="submit" class="md-raised md-cornered md-primary">Sign In with LDAP</md-button> -->
+                </div>
+                
+                <div class="row">
+                    <div class="m-t-20 text-center">
+                        <span>© 2017 <a href="#">DOST-ASTI</a></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- end login -->
+</div>

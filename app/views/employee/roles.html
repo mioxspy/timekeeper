@@ -1,0 +1,159 @@
+<div ng-controller="EmployeeRoleCtrl as rol">
+	<div class="row">
+		<div class="p-l-1">
+			<div class="placeloadtitle col-md-9" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadbread col-md-3" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadleft col-md-5" ng-hide="contentPlaceholder"></div>
+			<div class="placeloadright col-md-7" ng-hide="contentPlaceholder"></div>
+		</div>
+	</div>
+	<!-- begin contentData -->
+	<div ng-show="contentData">
+	    <!-- begin breadcrumb -->
+	    <ol class="breadcrumb pull-right">
+	        <li><a href="javascript:;">Home</a></li>
+	        <li><a href="javascript:;">User Management</a></li>
+	        <li class="active">Manage Roles</li>
+	    </ol>
+	    <!-- end breadcrumb -->
+	    <!-- begin page-header -->
+	    <h1 class="page-header">Permissions <small>add, edit and delete roles,...</small></h1>
+	    <!-- end page-header -->
+	    <!-- begin row -->
+	    <div class="row">
+	    	<div class="col-md-5">
+	    	<!-- <pre>{{selected}}</pre> -->
+	    		<md-card ng-show="updatepage" class="updateRole" permission="['update roles']">
+					<md-card-content>
+						<div layout="column" layout-padding ng-cloak>
+							<md-content class="md-no-momentum">
+								<div class="text-center">
+									<h3 class="m-t-10" md-colors="{color: 'grey-800'}">Role</h3>
+									<p md-colors="{color: 'grey-700'}">Update priviledge.</p>
+								</div>
+								<div class="search-divider m-b-20"></div>
+								<form name="updateForm" ng-submit="updateRoles(updaterole)">
+									<div layout="row" layout-wrap>
+										<div flex="100">
+											<md-input-container class="md-block">
+												<label>Role Name</label>
+												<input required type="text" name="name" ng-model="updaterole.roleName"
+												/>
+												<div ng-messages="updateForm.roleName.$error">
+													<div ng-message="required">This is required.</div>
+												</div>
+											</md-input-container>
+										</div>
+									</div>
+									<div layout="row" layout-wrap>
+										<div flex="100" layout="column">
+											<div>
+												<fieldset class="role-fieldset" >
+													<legend class="role-legend">Permissions </legend>
+													<div layout="row" layout-wrap flex>
+														<!-- <div flex-xs flex="50">
+															<md-checkbox aria-label="Select All"
+																ng-checked="isChecked()"
+																md-indeterminate="isIndeterminate()"
+																ng-click="toggleAll()">
+																<span ng-if="isChecked()">Un-</span>Select All
+															</md-checkbox>
+														</div> -->
+														<div class="role-select-all-checkboxes" flex="100" ng-repeat="item in permItems">
+															<md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" ng-model="updaterole.permission[$index]" >
+																{{ item }}
+															</md-checkbox>
+														</div>
+														<div ng-messages="updateForm.permission.$error">
+															<div ng-message="required">This is required.</div>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+									<div class="m-t-30">
+										<md-button type="submit" ng-disabled="updateForm.$invalid" class="md-raised md-primary m-l-0">Submit</md-button>
+									</div>
+								</form>
+							</md-content>
+						</div>
+					</md-card-content>
+				</md-card>
+				<md-card ng-show="!updatepage" class="createRole" permission="['create roles']">
+					<md-card-content>
+						<div layout="column" layout-padding ng-cloak>
+							<md-content class="md-no-momentum">
+								<div class="text-center">
+									<h3 class="m-t-10" md-colors="{color: 'grey-800'}">Role</h3>
+									<p md-colors="{color: 'grey-700'}">Create priviledge.</p>
+								</div>
+								<div class="search-divider m-b-20"></div>
+								<form name="roleForm" ng-submit="addRole(roleDetail)">
+									<div layout="row" layout-wrap>
+										<div flex="100">
+											<md-input-container class="md-block">
+												<label>Role Name</label>
+												<input required type="text" name="name" ng-model="roleDetail.roleName"
+												/>
+												<div ng-messages="roleForm.roleName.$error">
+													<div ng-message="required">This is required.</div>
+												</div>
+											</md-input-container>
+										</div>
+									</div>
+									<div layout="row" layout-wrap>
+										<div flex="100" layout="column">
+											<div>
+												<fieldset class="role-fieldset" >
+													<legend class="role-legend">Permissions </legend>
+													<div layout="row" layout-wrap flex>
+														<!-- <div flex-xs flex="50">
+															<md-checkbox aria-label="Select All"
+																ng-checked="isChecked()"
+																md-indeterminate="isIndeterminate()"
+																ng-click="toggleAll()">
+																<span ng-if="isChecked()">Un-</span>Select All
+															</md-checkbox>
+														</div> -->
+														<div class="role-select-all-checkboxes" flex="100" ng-repeat="item in permItems">
+															<md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" ng-model="roleDetail.permission[item]" >
+																{{ item }}
+															</md-checkbox>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+									<div class="m-t-30">
+										<md-button type="submit" ng-disabled="roleForm.$invalid" class="md-raised md-primary m-l-0">Submit</md-button>
+									</div>
+								</form>
+							</md-content>
+						</div>
+					</md-card-content>
+				</md-card>
+	    	</div>
+	    	<div class="(isupdate == 'true')? 'col-md-7' : 'col-md-12'">
+	    	<!-- <pre>{{updaterole | json}}</pre> -->
+	    		<md-card>
+	    			<md-card-title  md-colors="{background: 'Amber-A700'}">
+	    				<md-card-title-text layout="row" layout-align="start center">
+	    					<span class="md-headline" md-colors="{color: 'grey-50'}">Roles</span>
+	    				</md-card-title-text>
+	    				<md-card-actions ng-show="updatepage" layout="row" layout-align="end center" permission="['create roles']">
+				          	<md-button class="md-raised md-primary" ng-click="setupdatepage(false)">Add Role</md-button>
+				        </md-card-actions>
+	    			</md-card-title>
+	    			<md-divider></md-divider>
+					<md-card-content>
+	    				<table datatable="" dt-options="dtOptions" dt-instance="dtInstance" dt-columns="dtColumns" class="table table-bordered table-condensed" width="100%">
+						</table>
+	    			</md-card-content>
+	    		</md-card>
+	    	</div>
+	    </div>
+	    <!-- end row -->
+	</div>
+</div>
